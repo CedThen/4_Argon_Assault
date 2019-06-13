@@ -35,6 +35,31 @@ public class Player : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("player collided");
+        //if (state != State.Alive || collisionsDisabled)
+        //    return; //ignore collisions once dead
+
+        //switch (collision.gameObject.tag)
+        //{
+        //    case "Friendly":
+        //        break;
+        //    case "Finish":
+        //        StartSuccessSequence();
+        //        break;
+        //    default:
+        //        StartDeathSequence();
+        //        break;
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("player triggered");
+    }
+
+
     private void ProcessRotation()
     {
         float pitch = transform.localPosition.y * pitchMult + yThrow * controlPitchMult;
