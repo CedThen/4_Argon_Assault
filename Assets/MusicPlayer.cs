@@ -8,19 +8,18 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //if more than one music player in scene, destroy ourselves. else keep ourselves around
+        int numMusicPlayer = FindObjectsOfType<MusicPlayer>().Length;
+        print("number of music players");
+        if(numMusicPlayer > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+            DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Invoke("PlayMusic", 2f);
-    }
-
-    void PlayMusic()
-    {
-        SceneManager.LoadScene(1);
-    }
+    
 
     
 }

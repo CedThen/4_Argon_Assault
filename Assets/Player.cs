@@ -21,43 +21,22 @@ public class Player : MonoBehaviour
     [SerializeField] float controlPitchMult = -20f;
     [SerializeField] float controlYawMult = 15f;
     [SerializeField] float controlRollFactor = -20f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    bool isControlEnabled = true;
 
     // Update is called once per frame
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if(isControlEnabled)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
+        
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        print("player collided");
-        //if (state != State.Alive || collisionsDisabled)
-        //    return; //ignore collisions once dead
-
-        //switch (collision.gameObject.tag)
-        //{
-        //    case "Friendly":
-        //        break;
-        //    case "Finish":
-        //        StartSuccessSequence();
-        //        break;
-        //    default:
-        //        StartDeathSequence();
-        //        break;
-        //}
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print("player triggered");
-    }
+    
 
 
     private void ProcessRotation()
@@ -92,5 +71,11 @@ public class Player : MonoBehaviour
         ////yaw is y, pitch is x axis
         //transform.localRotation = Quaternion.Euler(pitchThrow, yawThrow, 0f);
 
+    }
+
+    void OnPlayerDeath() //called by string reference!!
+    {
+        print("controls frozen");
+        isControlEnabled = false;
     }
 }
