@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDelay: 1
-  deathFX: {fileID: 0}
+  deathFX: {fileID: 1351162712376390552}
 --- !u!1001 &3957113882274489054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -412,6 +412,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43bc891ee0da8094e96de62dbadac66d, type: 3}
+--- !u!1 &1351162712376390552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7712104524907464503, guid: 43bc891ee0da8094e96de62dbadac66d,
+    type: 3}
+  m_PrefabInstance: {fileID: 8774891553773089967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5053952909428430341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4604246742403179178, guid: 43bc891ee0da8094e96de62dbadac66d,

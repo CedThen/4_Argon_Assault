@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     bool isControlEnabled = true;
 
+    [SerializeField] GameObject[] Guns;
+
     // Update is called once per frame
     void Update()
     {
@@ -31,12 +33,40 @@ public class Player : MonoBehaviour
         {
             ProcessTranslation();
             ProcessRotation();
+            ProcessFiring();
         }
         
         
     }
 
-    
+    private void ProcessFiring()
+    {
+        if (Input.GetAxisRaw("Fire1") != 0)
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in Guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in Guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
 
 
     private void ProcessRotation()
@@ -64,13 +94,6 @@ public class Player : MonoBehaviour
         float clampedYPos = Mathf.Clamp(rawYPos, -yRange, yRange);
 
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
-
-
-        //float yawThrow = clampedXPos * yawMult;
-        //float pitchThrow = clampedYPos * pitchMult;
-        ////yaw is y, pitch is x axis
-        //transform.localRotation = Quaternion.Euler(pitchThrow, yawThrow, 0f);
-
     }
 
     void OnPlayerDeath() //called by string reference!!
